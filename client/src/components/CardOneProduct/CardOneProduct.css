@@ -1,0 +1,19 @@
+.product-card {
+  width: 240px;
+  height: 450px; 
+  cursor: pointer; 
+  transition: transform 0.2s ease; 
+  margin: auto;
+}
+
+.product-card:hover {
+  transform: scale(1.02); 
+}
+
+.card-image {
+  border-radius: 0.25rem;
+  height: 200px; 
+  object-fit: cover; 
+  border-top-left-radius: 10px; 
+  border-top-right-radius: 10px;
+}
