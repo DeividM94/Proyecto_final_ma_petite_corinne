@@ -8,7 +8,7 @@ export const NavBarApp = ({ setShowRegister, setShowLogin, setShowEditUser, setS
   const [isOpen, setIsOpen] = useState(false);
   const [isOpen2, setIsOpen2] = useState(false);
   const [isOpen3, setIsOpen3] = useState(false);
-
+  const [showSearch, setShowSearch] = useState(false);
   const [position, setPosition] = useState({});
 
   const { user, setUser, setToken, setIsAuthenticated, cartItems } = useContext(AppContext);
@@ -43,6 +43,10 @@ export const NavBarApp = ({ setShowRegister, setShowLogin, setShowEditUser, setS
     } else {
       navigate("/shop/cart");
     }
+  };
+
+  const toggleSearch = () => {
+    setShowSearch(prevState => !prevState);
   };
 
   const openEditUser = () => {
@@ -171,6 +175,22 @@ export const NavBarApp = ({ setShowRegister, setShowLogin, setShowEditUser, setS
             <span><Link to="/">Blog</Link></span>
             <span><Link to="/">Contacto</Link></span>
             <span><Link to="/shop">Tienda</Link></span>
+            <div className="search-toggle">
+          {showSearch && (
+            <input 
+              type="text" 
+              placeholder="Buscar producto" 
+              className="h-75 me-2" 
+            />
+          )}
+          <img
+            className="icono-search"
+            src="/icon-search.svg"
+            alt="icono busqueda productos"
+            onClick={toggleSearch} 
+            style={{ cursor: 'pointer' }} 
+          />
+        </div>
           </div>
 
           {location.pathname.startsWith('/shop') && (
@@ -281,7 +301,7 @@ export const NavBarApp = ({ setShowRegister, setShowLogin, setShowEditUser, setS
               )}
             </div>
           )}
-{/* 
+
           <div className="search-toggle">
             <input type="text" placeholder="Buscar producto" />
             <img
@@ -289,7 +309,7 @@ export const NavBarApp = ({ setShowRegister, setShowLogin, setShowEditUser, setS
               src="/icon-search.svg"
               alt="icono busqueda productos"
             />
-          </div> */}
+          </div> 
         </div>
       </div>
     </nav>
